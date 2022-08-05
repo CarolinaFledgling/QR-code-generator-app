@@ -1,6 +1,6 @@
 function Canvas() {
   return (
-    <div class="qr-canvas">
+    <div >
       <canvas width="400" height="400"></canvas>
     </div>
   );

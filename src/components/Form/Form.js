@@ -1,23 +1,42 @@
+import isValidUrl from "../../helpers/isValidUrl"
+import React, { useState, useRef } from 'react';
+
+
 function Form() {
+  const [url, setUrl] = useState('')
+  const [errors, setErrors] = useState({
+    url: '',
+  })
+
+  //let spanElement = useRef("invalid url, check example in the placeholder")
+
+  const handleGenerateCode = () => {
+    console.log(isValidUrl(url));
+    if (!isValidUrl(url)) {
+      setErrors({
+        ...errors,
+        url: 'sorry invalid url 😊, check example in the placeholder'
+      })
+    }
+  }
+
   return (
-    <form action="#" class="form">
-      <label class="form-label" for="url">
+    <form action="#" >
+      <label htmlFor="url">
         Enter url:
       </label>
       <input
-        id="url"
-        class="form-input"
         type="url"
-        spellcheck="false"
         placeholder="https://example.com"
-        requireds
+        value={url}
+        onChange={e => setUrl(e.target.value)}
       />
-      <span class="from-span"></span>
-      <div class="btns-group">
-        <button class="btn btn-generate">Generate QR Code</button>
-        <button class="btn btn-reset">Reset</button>
+      <p >{errors.url}</p>
+      <div>
+        <button onClick={handleGenerateCode} >Generate QR Code</button>
+        <button >Reset</button>
       </div>
-      <button class="btn btn-download">Download File</button>
+      <button>Download File</button>
     </form>
   );
 }

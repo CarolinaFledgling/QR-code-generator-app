@@ -1,14 +1,16 @@
 function Footer() {
   return (
     <footer>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Made by
-      </a>
+      <p> Made with ❤ by 
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Karolina Kulinska
+        </a>
+      </p>
     </footer>
   );
 }
