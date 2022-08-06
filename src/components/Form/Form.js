@@ -2,6 +2,7 @@ import isValidUrl from "../../helpers/isValidUrl"
 import React, { useState, useRef } from 'react';
 import QRCode from 'qrcode'
 import { Box, Button, TextField, Typography } from "@mui/material";
+import Canvas from "../Canvas/Canvas";
 
 
 
@@ -86,29 +87,23 @@ function Form() {
     <Box>
       <form action="#">
         <Box>
-
           <TextField label="Enter url:" id="outlined-basic" variant="outlined" value={url}
             onChange={e => setUrl(e.target.value)} sx={{ mt: "10px", width: "100%" }} />
         </Box>
-
-        <Typography color="error" sx={{ mt: "10px", width: "100%" }}>{errors.url}</Typography>
+        <Typography color="error" sx={{ mt: "10px", width: "100%",fontWeight:"500" }}>{errors.url}</Typography>
         <div>
           <Button sx={{ mt: "10px", width: "100%" }} color="secondary" variant="contained" onClick={handleGenerateCode} >Generate QR Code</Button>
           <Button sx={{ mt: "10px", width: "100%" }} color="primary" variant="contained" onClick={handleResetBtn} >Reset</Button>
         </div>
         <Button onClick={handleDownloadFile} sx={{ mt: "10px", width: "100%" }} color="info" variant="contained">Download File</Button>
       </form>
-      <Box sx={{
-        width: "300px", height: "300px", display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}>
-        <canvas ref={canvasElementRef} width="300" height="300"></canvas>
-      </Box>
+      <Canvas canvasElementRef={canvasElementRef}/>
     </Box>
 
   );
 }
 
 export default Form;
+
+
 
