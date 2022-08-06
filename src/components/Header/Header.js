@@ -1,9 +1,11 @@
+import { Box, Typography } from "@mui/material";
+
 function Header() {
   return (
-    <header >
-      <h1>QR Code Generator</h1>
-      <p>Paste a url and create QR code</p>
-    </header>
+    <Box>
+      <Typography variant="h1" sx={{ fontSize: "2rem",}}>QR Code Generator</Typography>
+      <Typography>Paste a url and create QR code</Typography>
+    </Box>
   );
 }
 
