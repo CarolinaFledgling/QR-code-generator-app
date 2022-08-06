@@ -1,7 +1,7 @@
 import isValidUrl from "../../helpers/isValidUrl"
 import React, { useState, useRef } from 'react';
 import QRCode from 'qrcode'
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 
 
 
@@ -20,12 +20,16 @@ function Form() {
     if (!isValidUrl(url)) {
       setErrors({
         ...errors,
-        url: 'You entered the wrong url format, look at an example 😊'
+        url: 'enter a valid url format 😁'
       })
     }
 
     if (!url || !isValidUrl(url)) return;
     //   console.log(url);
+    setErrors({
+      ...errors,
+      url: ''
+    })
 
     QRCode.toCanvas(canvasElementRef.current, url)
       .then(url => {
@@ -69,37 +73,38 @@ function Form() {
 
   const handleDownloadFile = () => {
     // download file
+
+    if (!url || !isValidUrl(url)) return;
+
     const dataURL = canvasElementRef.current.toDataURL();
     console.log("dataURL", dataURL);
     fetchFile(dataURL);
-
   }
 
 
   return (
     <Box>
       <form action="#">
-        <label htmlFor="url">
-          Enter url:
-        </label>
-        <input
-          type="url"
-          placeholder="https://example.com"
-          value={url}
-          onChange={e => setUrl(e.target.value)}
-        />
+        <Box>
+
+          <TextField label="Enter url:" id="outlined-basic" variant="outlined" value={url}
+            onChange={e => setUrl(e.target.value)} sx={{ mt: "10px", width: "100%" }} />
+        </Box>
+
         <Typography color="error" sx={{ mt: "10px", width: "100%" }}>{errors.url}</Typography>
         <div>
-
           <Button sx={{ mt: "10px", width: "100%" }} color="secondary" variant="contained" onClick={handleGenerateCode} >Generate QR Code</Button>
           <Button sx={{ mt: "10px", width: "100%" }} color="primary" variant="contained" onClick={handleResetBtn} >Reset</Button>
-
         </div>
         <Button onClick={handleDownloadFile} sx={{ mt: "10px", width: "100%" }} color="info" variant="contained">Download File</Button>
       </form>
-      <div >
-        <canvas ref={canvasElementRef} width="400" height="400"></canvas>
-      </div>
+      <Box sx={{
+        width: "300px", height: "300px", display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}>
+        <canvas ref={canvasElementRef} width="300" height="300"></canvas>
+      </Box>
     </Box>
 
   );

@@ -16,8 +16,7 @@ function App() {
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        height: "100vh",
-        width: "100%",
+        minHeight: "100vh",
         backgroundColor: "#F1F2F6"
       }}>
         <Box sx={{
@@ -25,8 +24,12 @@ function App() {
           justifyContent: "center",
           alignItems: "center",
           flexDirection: "column",
-          width: "50%",
-
+          borderRadius: "4px",
+          background: "#FBFAF8",
+          padding: "20px",
+          transition: "height 0.2s ease",
+          boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
+      
         }} >
           <Header />
           <Form />

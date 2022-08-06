@@ -6,16 +6,9 @@ const theme = createTheme({
   typography: {
     fontFamily: ["Inter", "sans-serif"].join(","),
     body1: {
-      fontSize: "0.9375rem",
+      fontSize: "1rem",
       fontWeight: 400,
-      letterSpacing: "0.00938rem",
-      lineHeight: 1.5,
-    },
-    body2: {
-      fontSize: "0.8125rem",
-      fontWeight: 400,
-      letterSpacing: "0.01071rem",
-      lineHeight: 1.43,
+      letterSpacing: "0.9",
     },
 
   },
