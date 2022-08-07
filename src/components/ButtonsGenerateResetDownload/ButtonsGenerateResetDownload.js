@@ -1,6 +1,8 @@
 import { Box, Button } from "@mui/material";
 
 
+//[TODO] to fix: when we enter url into input we are able to download an empty file png, solution after generating qr code and displaying 
+// we should have the possibility to download file, not just when we write url 
 
 function ButtonsGenerateResetDownload({ handleGenerateCode, handleResetBtn, handleDownloadFile }) {
   return <>
