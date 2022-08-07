@@ -26,10 +26,9 @@ function App() {
           flexDirection: "column",
           borderRadius: "4px",
           background: "#FBFAF8",
-          padding: "20px",
+          padding: "30px",
           transition: "height 0.2s ease",
           boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
-      
         }} >
           <Header />
           <Form />

@@ -1,8 +1,11 @@
 import isValidUrl from "../../helpers/isValidUrl"
 import React, { useState, useRef } from 'react';
 import QRCode from 'qrcode'
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import Canvas from "../Canvas/Canvas";
+import ValidationText from "../ValidationText/ValidationText";
+import InputUrl from "../InputUrl/InputUrl";
+import ButtonsGenerateResetDownload from "../ButtonsGenerateResetDownload/ButtonsGenerateResetDownload";
 
 
 
@@ -86,24 +89,27 @@ function Form() {
   return (
     <Box>
       <form action="#">
-        <Box>
-          <TextField label="Enter url:" id="outlined-basic" variant="outlined" value={url}
-            onChange={e => setUrl(e.target.value)} sx={{ mt: "10px", width: "100%" }} />
-        </Box>
-        <Typography color="error" sx={{ mt: "10px", width: "100%",fontWeight:"500" }}>{errors.url}</Typography>
-        <div>
-          <Button sx={{ mt: "10px", width: "100%" }} color="secondary" variant="contained" onClick={handleGenerateCode} >Generate QR Code</Button>
-          <Button sx={{ mt: "10px", width: "100%" }} color="primary" variant="contained" onClick={handleResetBtn} >Reset</Button>
-        </div>
-        <Button onClick={handleDownloadFile} sx={{ mt: "10px", width: "100%" }} color="info" variant="contained">Download File</Button>
+        <InputUrl url={url} setUrl={setUrl} />
+        <ValidationText errors={errors} />
+        <ButtonsGenerateResetDownload
+          handleGenerateCode={handleGenerateCode}
+          handleResetBtn={handleResetBtn}
+          handleDownloadFile={handleDownloadFile}
+        />
       </form>
-      <Canvas canvasElementRef={canvasElementRef}/>
+      <Canvas canvasElementRef={canvasElementRef} />
     </Box>
 
   );
 }
 
 export default Form;
+
+
+
+
+
+
 
 
 
