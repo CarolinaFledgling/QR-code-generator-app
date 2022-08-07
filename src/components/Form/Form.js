@@ -6,6 +6,7 @@ import Canvas from "../Canvas/Canvas";
 import ValidationText from "../ValidationText/ValidationText";
 import InputUrl from "../InputUrl/InputUrl";
 import ButtonsGenerateResetDownload from "../ButtonsGenerateResetDownload/ButtonsGenerateResetDownload";
+import PopoverButton from "../PopoverButton/PopoverButton";
 
 
 
@@ -24,7 +25,7 @@ function Form() {
     if (!isValidUrl(url)) {
       setErrors({
         ...errors,
-        url: 'enter a valid url format 😁'
+        url: 'enter a valid url format 😥'
       })
     }
 
@@ -76,7 +77,7 @@ function Form() {
   }
 
   const handleDownloadFile = () => {
-   
+
 
     if (!url || !isValidUrl(url)) return;
 
@@ -84,6 +85,8 @@ function Form() {
     console.log("dataURL", dataURL);
     fetchFile(dataURL);
   }
+
+
 
 
   return (
@@ -98,12 +101,15 @@ function Form() {
         />
       </form>
       <Canvas canvasElementRef={canvasElementRef} />
+      <PopoverButton />
     </Box>
 
   );
 }
 
 export default Form;
+
+
 
 
 

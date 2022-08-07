@@ -39,7 +39,7 @@ The HTMLCanvasElement.toDataURL() method returns a data URL containing a represe
 const dataURL = canvasElementRef.current.toDataURL();
 ```
 
-The <canvas> element allows you to draw graphics on a web page using JavaScript.
+The `<canvas>` element allows you to draw graphics on a web page using JavaScript.
 Every canvas has two elements that describes the height and width of the canvas i.e. height and width respectively.
 To clear HTML canvas we use The clearRect() method to clear the pixels in a given rectangle
 
