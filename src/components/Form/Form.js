@@ -12,6 +12,7 @@ import PopoverButton from "../PopoverButton/PopoverButton";
 
 function Form() {
   const [url, setUrl] = useState('')
+  const [isDisableBtn, setIsDisableBtn] = useState(true)
   const [errors, setErrors] = useState({
     url: '',
   })
@@ -39,6 +40,7 @@ function Form() {
     QRCode.toCanvas(canvasElementRef.current, url)
       .then(url => {
         console.log(url)
+        setIsDisableBtn(false)
       })
       .catch(err => {
         console.error(err)
@@ -46,6 +48,7 @@ function Form() {
   }
 
   const handleResetBtn = () => {
+    setIsDisableBtn(true)
     console.log(url)
     setUrl('')
     setErrors({
@@ -98,6 +101,7 @@ function Form() {
           handleGenerateCode={handleGenerateCode}
           handleResetBtn={handleResetBtn}
           handleDownloadFile={handleDownloadFile}
+          isDisableBtn={isDisableBtn}
         />
       </form>
       <Canvas canvasElementRef={canvasElementRef} />
